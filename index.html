@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boilermaker FIFO Job at Bruce Rock Engineering</title>
+    <style>
+        body, html { 
+            font-family: 'Arial', sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 5px; 
+            background-color: #f0f8ff; 
+            height: 100%;
+        }
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .view-button, .apply-button { 
+            background-color: #004d99; 
+            color: white; 
+            border: none; 
+            padding: 8px 16px; 
+            border-radius: 12px; 
+            cursor: pointer; 
+            font-size: 14px;
+            width: 180px;
+            transition: background-color 0.3s ease;
+        }
+        .view-button:hover, .apply-button:hover {
+            background-color: #003366;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .gify-card { 
+            background-color: white; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            padding: 20px; 
+            max-width: 600px; 
+            margin: 5% auto; 
+            border: 2px solid #004d99;
+            position: relative;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+        }
+        .header { 
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 15px;
+        }
+        .logo { 
+            width: 50px; 
+            height: 50px; 
+            background-color: #004d99; 
+            border-radius: 50%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            color: white; 
+            font-weight: bold; 
+            font-size: 16px;
+            margin-right: 15px;
+        }
+        h1 { 
+            color: #004d99; 
+            font-size: 24px; 
+            margin: 0; 
+            flex-grow: 1;
+            line-height: 1.2;
+        }
+        .tabs { 
+            display: flex; 
+            border-bottom: 2px solid #004d99; 
+            margin-bottom: 15px;
+        }
+        .tab { 
+            padding: 8px 16px; 
+            background-color: #f8f9fa; 
+            border: none; 
+            cursor: pointer; 
+            flex-grow: 1; 
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        .tab.active { 
+            background-color: #004d99; 
+            color: white; 
+        }
+        .tab-content { 
+            display: none; 
+        }
+        .tab-content.active { 
+            display: block; 
+        }
+        h3 { 
+            color: #004d99; 
+            margin: 10px 0; 
+            font-size: 18px; 
+        }
+        p, li { 
+            margin: 0 0 10px 0; 
+            font-size: 14px;
+        }
+        ul { 
+            padding-left: 20px; 
+            margin: 0 0 15px 0;
+        }
+        .highlight { 
+            color: #e74c3c; 
+            font-weight: bold; 
+        }
+    </style>
+</head>
+<body>
+    <div id="buttonContainer">
+        <button class="view-button" onclick="openJobTeaser()">View Job Opportunity</button>
+    </div>
+
+    <div id="jobTeaserModal" class="modal">
+        <div class="gify-card">
+            <span class="close" onclick="closeJobTeaser()">&times;</span>
+            <div class="header">
+                <div class="logo">BRE</div>
+                <div>
+                    <h1>Boilermaker - FIFO at Bruce Rock Engineering</h1>
+                </div>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="openTab(event, 'overview')">Overview</button>
+                <button class="tab" onclick="openTab(event, 'responsibilities')">Responsibilities</button>
+                <button class="tab" onclick="openTab(event, 'qualifications')">Qualifications</button>
+            </div>
+
+            <div id="overview" class="tab-content active">
+                <h3>Job Overview</h3>
+                <p>Join Bruce Rock Engineering in shaping the landscape of road transport equipment in Australia. We're seeking skilled Boilermakers passionate about building Australian-made products.</p>
+                <ul>
+                    <li><strong>Location:</strong> FIFO from Perth, WA</li>
+                    <li><strong>Type:</strong> Full-time permanent</li>
+                    <li><strong>Roster:</strong> 19:9 FIFO</li>
+                    <li><strong>Benefits:</strong> Fortnightly Tool Allowance, Weekly Meal Allowance, Free parking</li>
+                </ul>
+                <p>Immediate start available for the right candidate!</p>
+            </div>
+
+            <div id="responsibilities" class="tab-content">
+                <h3>Key Responsibilities</h3>
+                <ul>
+                    <li>Fabricate, weld, and conduct maintenance on road transport equipment</li>
+                    <li>Read and interpret technical drawings</li>
+                    <li>Select, clean, and prepare metal stock</li>
+                    <li>Perform various welding techniques, including MIG and FCAW</li>
+                    <li>Diagnose and repair damage on heavy vehicles</li>
+                    <li>Adhere to OH&S requirements and workplace safety procedures</li>
+                </ul>
+            </div>
+
+            <div id="qualifications" class="tab-content">
+                <h3>Qualifications & Skills</h3>
+                <ul>
+                    <li>Australian recognised Trade Certificate - Boilermaker/Fabricator</li>
+                    <li>Experience in road transport industry (highly advantageous)</li>
+                    <li>Experience or willingness to use a robotic welder</li>
+                    <li>Current LF (forklift) license or willingness to obtain one</li>
+                    <li>Ability to pass pre-employment medical, drug and alcohol test</li>
+                    <li>Valid National Police clearance (not older than 6 months)</li>
+                </ul>
+                <h3>Why Bruce Rock Engineering?</h3>
+                <ul>
+                    <li>Family-based values driven culture</li>
+                    <li>Career growth opportunities across 4 WA sites</li>
+                    <li>State-of-the-art facilities and machinery</li>
+                    <li>Excellent benefits including salary packaging and employee discounts</li>
+                </ul>
+            </div>
+
+            <button class="apply-button" onclick="applyNow()">Apply Now</button>
+        </div>
+    </div>
+
+    <script>
+        const applicationUrl = "https://www.seek.com.au/Boilermaker-jobs/in-Perth-WA-6000?jobId=77958938&type=promoted";
+
+        function openJobTeaser() {
+            document.getElementById('jobTeaserModal').style.display = 'block';
+        }
+
+        function closeJobTeaser() {
+            document.getElementById('jobTeaserModal').style.display = 'none';
+        }
+
+        function openTab(evt, tabName) {
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].style.display = "none";
+            }
+            var tabs = document.getElementsByClassName("tab");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].className = tabs[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        function applyNow() {
+            window.open(applicationUrl, '_blank');
+        }
+
+        // Close the modal if user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('jobTeaserModal')) {
+                closeJobTeaser();
+            }
+        }
+    </script>
+</body>
+</html>
